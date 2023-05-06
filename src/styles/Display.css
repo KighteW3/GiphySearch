@@ -1,0 +1,28 @@
+.main {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  display: grid;
+  grid-template-rows: 90px 1fr 50px;
+  overflow-y: hidden;
+}
+
+.display-container {
+  width: 100%;
+  height: 100%;
+  background-color: #00f;
+  position: relative;
+  display: flex;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  background-color: #aaa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*# sourceMappingURL=Display.css.map */

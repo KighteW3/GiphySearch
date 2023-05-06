@@ -1,0 +1,19 @@
+@import "App.scss";
+
+.display-container {
+  width: 100%;
+  height: 100%;
+  background-color: #00f;
+  position: relative;
+  display: flex;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  background-color: #aaa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

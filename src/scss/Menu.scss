@@ -1,0 +1,48 @@
+@import "App.scss";
+$width: 80%;
+
+.menu-container {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: antiquewhite;
+}
+
+.menu-container-on {
+  @extend .menu-container;
+  width: $width;
+  animation: toggleOn 0.5s forwards;
+}
+
+.menu-container-off {
+  @extend .menu-container-on;
+  width: $width;
+  animation: toggle 0.5s forwards;
+}
+
+@keyframes toggle {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-100%, 0);
+  }
+}
+@keyframes toggleOn {
+  0% {
+    transform: translate(-100%, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+
+@media only screen and (min-width: 820px) {
+  .menu-container {
+    width: 25%;
+  }
+}
