@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../customHooks/store";
 import "../styles/NavBar.css";
 import { turnMenuOn } from "../store/reducers/toggleMenu";
+import { changeSearch } from "../store/reducers/apiAccesor";
 
 export default function NavBar() {
   const isToggled = useAppSelector((state) => state.toggleMenu);
@@ -32,23 +33,52 @@ export default function NavBar() {
     );
   }
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const form = e.target as typeof e.target & {
+      searchTo: {value: string}
+    };
+
+    const keyvalue = form.searchTo.value
+
+    dispatch(changeSearch(keyvalue));
+  };
+
   if (screenSize < 720) {
     return (
       <div className="nav-mobile">
         <div className="nav-mobile__menu-button">
           <MenuButton />
         </div>
-        <form className="nav-mobile__form">
+        <form className="nav-mobile__form" onSubmit={handleSubmit}>
           <input
             className="nav-mobile__form__input"
             type="search"
             id="nav-mobile__form__search-bar"
+            name="searchTo"
           />
           <button
             className="nav-mobile__form__input"
             id="nav-mobile__form__submit-button"
+            value="submit"
+            type="submit"
+            name="submit"
           >
-            <img src="/img/search.png" alt="" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+              />
+            </svg>
           </button>
         </form>
       </div>

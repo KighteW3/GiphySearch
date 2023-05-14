@@ -2,8 +2,8 @@ import "../styles/Footer.css";
 
 export default function Footer() {
   return (
-    <div className='Footer-container'>
-      <div></div>
-    </div>
+    <footer className='Footer-container'>
+      <span style={{ height: "100%", width: "100px", textOverflow: "ellipsis"}}>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis repellendus tempora eligendi incidunt impedit dolore iste </span>
+    </footer>
   );
 }

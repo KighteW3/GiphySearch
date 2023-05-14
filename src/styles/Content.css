@@ -4,7 +4,7 @@
   position: absolute;
   bottom: 0;
   display: grid;
-  grid-template-rows: 90px 1fr 50px;
+  grid-template-rows: 13% 79% 8%;
   overflow-y: hidden;
 }
 
@@ -34,6 +34,31 @@
   margin: 0 15px;
 }
 .content-box__results {
+  width: 100%;
+  height: 100%;
+}
+.content-box__results__list {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  overflow-x: scroll;
+}
+.content-box__results__list li {
+  list-style: none;
+  padding: none;
+  width: 140px;
+  height: 170px;
+  background-color: #222;
+  margin: 20px;
+}
+.content-box__results__list li img {
+  object-fit: cover;
   width: 100%;
   height: 100%;
 }

@@ -3,8 +3,6 @@ import Menu from "./Menu";
 import Content from "./Content";
 
 export default function Display() {
-  
-
   return (
     <div className="display-container">
       <Menu />

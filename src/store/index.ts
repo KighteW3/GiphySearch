@@ -1,9 +1,11 @@
 import {configureStore} from '@reduxjs/toolkit'
 import toggleMenuReducer from './reducers/toggleMenu'
+import apiAccesorReducer from './reducers/apiAccesor';
 
 export const store = configureStore({
   reducer: {
-    toggleMenu: toggleMenuReducer
+    toggleMenu: toggleMenuReducer,
+    apiAccesor: apiAccesorReducer
   }
 })
 

@@ -1,24 +1,47 @@
 @import "App.scss";
 $width: 80%;
 
-.menu-container {
-  display: flex;
+.menu {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 40% 60%;
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 0;
+  transform: translate(-100%, 0);
+  width: $width;
   height: 100%;
   background-color: antiquewhite;
+
+  .menu__photo {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+
+  .menu__filters {
+    width: 100%;
+    height: 100%;
+    
+  }
 }
 
-.menu-container-on {
-  @extend .menu-container;
+.menu-on {
+  @extend .menu;
   width: $width;
   animation: toggleOn 0.5s forwards;
 }
 
-.menu-container-off {
-  @extend .menu-container-on;
+.menu-off {
+  @extend .menu-on;
   width: $width;
   animation: toggle 0.5s forwards;
 }
@@ -40,9 +63,8 @@ $width: 80%;
   }
 }
 
-
 @media only screen and (min-width: 820px) {
-  .menu-container {
+  .menu {
     width: 25%;
   }
 }
