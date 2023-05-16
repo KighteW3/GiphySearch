@@ -20,21 +20,36 @@
   height: 100%;
   background-color: antiquewhite;
 }
-.menu .menu__photo, .menu-on .menu__photo, .menu-off .menu__photo {
+.menu__photo {
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.menu .menu__photo img, .menu-on .menu__photo img, .menu-off .menu__photo img {
+.menu__photo img {
   width: 150px;
   height: 150px;
   object-fit: cover;
   border-radius: 50%;
 }
-.menu .menu__filters, .menu-on .menu__filters, .menu-off .menu__filters {
+.menu__filters {
   width: 100%;
   height: 100%;
+}
+.menu__filters form {
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.menu__filters form select option {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .menu-on, .menu-off {
@@ -66,6 +81,11 @@
 @media only screen and (min-width: 820px) {
   .menu, .menu-on, .menu-off {
     width: 25%;
+  }
+}
+@media only screen and (max-width: 356px) {
+  .menu, .menu-on, .menu-off {
+    width: 100%;
   }
 }
 

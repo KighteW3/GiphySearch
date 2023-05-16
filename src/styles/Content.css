@@ -48,6 +48,7 @@
   align-items: flex-start;
   flex-wrap: wrap;
   overflow-x: scroll;
+  gap: 25px;
 }
 .content-box__results__list li {
   list-style: none;
@@ -55,7 +56,6 @@
   width: 140px;
   height: 170px;
   background-color: #222;
-  margin: 20px;
 }
 .content-box__results__list li img {
   object-fit: cover;

@@ -3,7 +3,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 const initialState = {
   keyname: "Panda",
   limit: 20,
-  rating: "g",
+  rating: "pg-13",
   language: "es",
 };
 

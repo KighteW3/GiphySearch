@@ -5,16 +5,19 @@ import "../styles/Content.css";
 export default function Content() {
   const keyvalue = useAppSelector((state) => state.apiAccesor.keyname);
   const [apiResult, setApiResult] = useState([]);
+  const limit = useAppSelector((state) => state.apiAccesor.limit);
+  const rating = useAppSelector((state) => state.apiAccesor.rating);
+  const lang = useAppSelector((state) => state.apiAccesor.language);
 
   useEffect(() => {
     (async () => {
       const res = await fetch(
-        `https://api.giphy.com/v1/gifs/search?api_key=hbrH2e76pcieIfpPjMNg6689hgeeg3Oe&q=${keyvalue}`
+        `https://api.giphy.com/v1/gifs/search?api_key=hbrH2e76pcieIfpPjMNg6689hgeeg3Oe&q=${keyvalue}&limit=${limit}&rating=${rating}&lang=${lang}`
       );
       const data = await res.json();
       setApiResult(data.data);
     })();
-  }, [keyvalue]);
+  }, [keyvalue, limit, rating, lang]);
 
   function ContentFilter() {
     return (
@@ -33,7 +36,7 @@ export default function Content() {
           {apiResult.map((result: any) => {
             return (
               <li key={result.id}>
-                <img src={result.images.downsized_medium.url} alt="" />
+                <img loading="lazy" src={result.images.downsized_medium.url} alt="" />
               </li>
             );
           })}
