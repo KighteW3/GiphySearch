@@ -11,7 +11,7 @@ $width: 80%;
   transform: translate(-100%, 0);
   width: $width;
   height: 100%;
-  background-color: antiquewhite;
+  background-color: $primaryColorApp;
 
   &__photo {
     height: 100%;
@@ -81,15 +81,38 @@ $width: 80%;
   }
 }
 
+@media only screen and (min-width: 1000px) {
+  .menu {
+    &__photo {
+      img {
+        width: 200px;
+        height: 200px;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 840px) and (max-width: 1000px) {
+  .menu {
+
+    &__photo {
+      img {
+        width: 170px;
+        height: 170px;
+      }
+    }
+  }
+}
+
 @media only screen and (min-width: 840px) {
   .menu {
-    width: 35%;
+    width: 30%;
     min-width: 175px;
     position: static;
     transform: translate(0, 0);
   }
   .menu-on {
-    width: 35%;
+    width: 30%;
     min-width: 175px;
     position: static;
     transform: translate(0, 0);
@@ -105,5 +128,11 @@ $width: 80%;
 @media only screen and (max-width: 356px) {
   .menu {
     width: 100%;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .menu {
+    background-color: $darkPrimaryColorApp;
   }
 }

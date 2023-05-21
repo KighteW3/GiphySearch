@@ -101,8 +101,10 @@ $separatorInputDefault: 14px;
   }
 }
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
   .nav-mobile {
+    background-color: $darkPrimaryColorApp;
+
     &__form {
       #nav-mobile__form__submit-button {
         img {

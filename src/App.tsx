@@ -51,7 +51,7 @@ function App() {
         console.log(e)
       }
     })()
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="main">

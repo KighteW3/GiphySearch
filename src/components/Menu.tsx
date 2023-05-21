@@ -9,6 +9,7 @@ import {
 } from "../store/reducers/apiAccesor";
 
 export default function Menu() {
+  const [keyToSearch, setKeyToSearch] = useState("");
   const [screenSize, setScreenSize] = useState(0);
   const isToggled = useAppSelector((state) => state.toggleMenu);
   const [wichClass, setWichClass] = useState("menu");
@@ -30,14 +31,26 @@ export default function Menu() {
   }, []);
 
   useEffect(() => {
+    const searchStored = localStorage.getItem("keyname");
+
+    try {
+      if (searchStored && searchStored !== null) {
+        setKeyToSearch(searchStored)
+      } else {
+        setKeyToSearch(keyname)
+      }
+    } catch (e) {
+      console.log(e);
+    }
+
     fetch(
-      `https://api.giphy.com/v1/gifs/search?api_key=hbrH2e76pcieIfpPjMNg6689hgeeg3Oe&q=${keyname}&limit=${limit}&rating=${rating}&lagn=${lang}`
+      `https://api.giphy.com/v1/gifs/search?api_key=hbrH2e76pcieIfpPjMNg6689hgeeg3Oe&q=${keyToSearch}&limit=${limit}&rating=${rating}&lagn=${lang}`
     )
       .then((data) => data.json())
       .then((res) =>
         setMenuIcon(res.data[randomNumber(0, 9)].images.downsized_medium.url)
       );
-  }, [keyname, limit, rating, lang]);
+  }, [keyname, limit, rating, lang, keyToSearch]);
 
   useEffect(() => {
     if (screenSize < 840) {
