@@ -9,10 +9,10 @@ import {
 } from "../store/reducers/apiAccesor";
 
 export default function Menu() {
+  const [screenSize, setScreenSize] = useState(0);
   const isToggled = useAppSelector((state) => state.toggleMenu);
   const [wichClass, setWichClass] = useState("menu");
   const [menuIcon, setMenuIcon] = useState("");
-  const [menuIcon2, setMenuIcon2] = useState("");
 
   const dispatch = useAppDispatch();
 
@@ -20,6 +20,14 @@ export default function Menu() {
   const limit = useAppSelector((state) => state.apiAccesor.limit);
   const rating = useAppSelector((state) => state.apiAccesor.rating);
   const lang = useAppSelector((state) => state.apiAccesor.language);
+
+  useEffect(() => {
+    setScreenSize(window.screen.availWidth);
+
+    window.addEventListener("resize", () => {
+      setScreenSize(window.screen.availWidth);
+    });
+  }, []);
 
   useEffect(() => {
     fetch(
@@ -32,15 +40,18 @@ export default function Menu() {
   }, [keyname, limit, rating, lang]);
 
   useEffect(() => {
-    if (isToggled === 0) {
-      setWichClass("menu");
-    } else if (isToggled === 1) {
-      setWichClass("menu-on");
-      setMenuIcon2(menuIcon);
-    } else if (isToggled === 2) {
-      setWichClass("menu-off");
+    if (screenSize < 840) {
+      if (isToggled === 0) {
+        setWichClass("menu");
+      } else if (isToggled === 1) {
+        setWichClass("menu-on");
+      } else if (isToggled === 2) {
+        setWichClass("menu-off");
+      }
+    } else {
+      setWichClass("menu-on")
     }
-  }, [isToggled, menuIcon]);
+  }, [isToggled, menuIcon, screenSize]);
 
   const handleChanges = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -64,14 +75,21 @@ export default function Menu() {
     return (
       <form id="menu__filters__menu" onSubmit={handleChanges}>
         <label htmlFor="menu__filters__limits">Límite de gifs:</label>
-        <select form="menu__filters__menu" name="filtersLimits" id="menu__filters__limits">
+        <select
+          form="menu__filters__menu"
+          name="filtersLimits"
+          id="menu__filters__limits"
+        >
           <option hidden>{limit}</option>
           <option value="10">10</option>
           <option value="20">20</option>
           <option value="30">30</option>
           <option value="40">40</option>
           <option value="50">50</option>
-          <option value="60">60</option>
+          <option value="70">70</option>
+          <option value="100">100</option>
+          <option value="120">120</option>
+          <option value="150">150</option>
         </select>
         <label htmlFor="menu__filters__rating">Clasificación por edad:</label>
         <select name="filtersRating" id="menu__filters__rating">
@@ -89,7 +107,7 @@ export default function Menu() {
           <option value="pt">Portugués</option>
           <option value="ja">Japonés</option>
         </select>
-        <input type="submit" value="Aplicar"/>
+        <input type="submit" value="Aplicar" />
       </form>
     );
   }
@@ -97,7 +115,7 @@ export default function Menu() {
   return (
     <div className={wichClass}>
       <div className="menu__photo">
-        <img src={menuIcon2} alt="Gif menu" />
+        <img src={menuIcon} alt="Gif menu" />
       </div>
       <div className="menu__filters">
         <FilterForm />

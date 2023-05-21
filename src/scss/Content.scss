@@ -44,6 +44,8 @@
       flex-wrap: wrap;
       overflow-x: scroll;
       gap: 25px;
+      overflow-x: hidden;
+      overflow-y: auto;
 
       li {
         list-style: none;

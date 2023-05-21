@@ -16,6 +16,7 @@
 
 #root {
   width: 100%;
+  overflow-y: hidden;
 }
 
 @media (prefers-color-scheme: light) {

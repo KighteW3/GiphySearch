@@ -33,10 +33,10 @@ export default function Content() {
     return (
       <>
         <ul className="content-box__results__list">
-          {apiResult.map((result: any) => {
+          {apiResult.map((result: any ) => {
             return (
               <li key={result.id}>
-                <img loading="lazy" src={result.images.downsized_medium.url} alt="" />
+                <img loading="lazy" src={result.images.downsized_medium.url} alt="Img's from GIPHY" />
               </li>
             );
           })}

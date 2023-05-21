@@ -37,15 +37,15 @@ export default function NavBar() {
     e.preventDefault();
 
     const form = e.target as typeof e.target & {
-      searchTo: {value: string}
+      searchTo: { value: string };
     };
 
-    const keyvalue = form.searchTo.value
+    const keyvalue = form.searchTo.value;
 
     dispatch(changeSearch(keyvalue));
   };
 
-  if (screenSize < 720) {
+  if (screenSize < 840) {
     return (
       <div className="nav-mobile">
         <div className="nav-mobile__menu-button">
@@ -85,9 +85,38 @@ export default function NavBar() {
     );
   } else {
     return (
-      <>
-        <div></div>
-      </>
+      <div className="nav-mobile">
+        <form className="nav-mobile__form" onSubmit={handleSubmit}>
+          <input
+            className="nav-mobile__form__input"
+            type="search"
+            id="nav-mobile__form__search-bar"
+            name="searchTo"
+          />
+          <button
+            className="nav-mobile__form__input"
+            id="nav-mobile__form__submit-button"
+            value="submit"
+            type="submit"
+            name="submit"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+              />
+            </svg>
+          </button>
+        </form>
+      </div>
     );
   }
 }

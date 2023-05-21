@@ -78,9 +78,23 @@
     transform: translate(0, 0);
   }
 }
-@media only screen and (min-width: 820px) {
+@media only screen and (min-width: 840px) {
   .menu, .menu-on, .menu-off {
-    width: 25%;
+    width: 35%;
+    min-width: 175px;
+    position: static;
+    transform: translate(0, 0);
+  }
+  .menu-on, .menu-off {
+    width: 35%;
+    min-width: 175px;
+    position: static;
+    transform: translate(0, 0);
+  }
+}
+@media only screen and (min-width: 600px) and (max-width: 840px) {
+  .menu, .menu-on, .menu-off {
+    width: 40%;
   }
 }
 @media only screen and (max-width: 356px) {

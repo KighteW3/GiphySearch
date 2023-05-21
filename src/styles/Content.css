@@ -49,6 +49,8 @@
   flex-wrap: wrap;
   overflow-x: scroll;
   gap: 25px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 .content-box__results__list li {
   list-style: none;
