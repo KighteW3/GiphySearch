@@ -13,18 +13,22 @@ export const apiAccesorSlice = createSlice({
   reducers: {
     changeSearch: (state, action: PayloadAction<string>) => {
       state.keyname = action.payload;
+      localStorage.setItem("keyname", action.payload.toString())
       return state;
     },
     changeLimit: (state, action: PayloadAction<number>) => {
       state.limit = action.payload;
+      localStorage.setItem("limit", action.payload.toString())
       return state;
     },
     changeRating: (state, action: PayloadAction<string>) => {
       state.rating = action.payload;
+      localStorage.setItem("rating", action.payload.toString())
       return state;
     },
     changeLanguage: (state, action: PayloadAction<string>) => {
       state.language = action.payload;
+      localStorage.setItem("language", action.payload.toString())
       return state;
     },
   },
