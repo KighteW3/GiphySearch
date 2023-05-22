@@ -50,6 +50,9 @@ $separatorInputDefault: 14px;
     }
 
     #nav-mobile__form__search-bar {
+      padding: 5px 20px 5px 20px;
+      box-sizing: border-box;
+      font-size: 20px;
       width: 200px;
       border-radius: $borderRadius 0 0 $borderRadius;
     }

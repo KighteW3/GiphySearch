@@ -1,5 +1,6 @@
 @import "App.scss";
 $width: 80%;
+$margin-gap: 10px;
 
 .menu {
   display: grid;
@@ -20,33 +21,78 @@ $width: 80%;
     align-items: center;
 
     img {
-      width: 150px;
-      height: 150px;
+      width: 80%;
+      height: 80%;
       object-fit: cover;
-      border-radius: 50%;
+      border-radius: $borderRadius;
     }
   }
 
   &__filters {
     width: 100%;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    form {
+    &__menu {
       width: 100%;
-      height: 100%;
+      height: 80%;
       flex-direction: column;
-      flex-wrap: wrap;
       display: flex;
-      justify-content: center;
       align-items: center;
+      gap: $margin-gap;
+      overflow-y: scroll;
 
-      select {
-        option {
-          text-align: center;
-          display: flex;
-          justify-content: center;
-          align-items: center;
+      &__options {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        &__label {
+          font-size: 18px;
+          margin: 0 15px 0 15px;
         }
+        
+        &__select {
+          &:hover {
+            transition: 0.3s;
+            background-color: $hoversLight;
+            cursor: pointer;
+          }
+
+          color: $darkPrimaryColorApp;
+          background-color: $secondColorApp;
+          border: none;
+          outline: none;
+          padding: 5px 15px 5px 15px;
+          border-radius: $borderRadius;
+          margin: 5px;
+          
+          option {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+      }
+
+      &__submit {
+        &:hover {
+          cursor: pointer;
+          background-color: $hoversLight;
+        }
+
+        transition: 0.3s;
+        margin: $margin-gap;
+        width: 120px;
+        color: $darkPrimaryColorApp;
+        background-color: $secondColorApp;
+        border: none;
+        outline: none;
+        padding: 5px;
+        border-radius: $borderRadius;
       }
     }
   }
@@ -81,28 +127,6 @@ $width: 80%;
   }
 }
 
-@media only screen and (min-width: 1000px) {
-  .menu {
-    &__photo {
-      img {
-        width: 200px;
-        height: 200px;
-      }
-    }
-  }
-}
-
-@media only screen and (min-width: 840px) and (max-width: 1000px) {
-  .menu {
-
-    &__photo {
-      img {
-        width: 170px;
-        height: 170px;
-      }
-    }
-  }
-}
 
 @media only screen and (min-width: 840px) {
   .menu {
@@ -122,6 +146,8 @@ $width: 80%;
 @media only screen and (min-width: 600px) and (max-width: 840px) {
   .menu {
     width: 40%;
+    position: static;
+    transform: translate(0, 0);
   }
 }
 
@@ -134,5 +160,29 @@ $width: 80%;
 @media (prefers-color-scheme: dark) {
   .menu {
     background-color: $darkPrimaryColorApp;
+    
+    &__filters {
+      &__menu {
+        &__options {
+          &__select {
+            &:hover {
+              background-color: $hoversDark;
+            }
+
+            background-color: $darkSecondColorApp;
+            color: $secondColorApp
+          }
+        }
+
+        &__submit {
+          &:hover {
+            background-color: $hoversDark;
+          }
+
+          background-color: $darkSecondColorApp;
+          color: $secondColorApp
+        }
+      }
+    }
   }
 }

@@ -14,6 +14,7 @@ export default function Menu() {
   const isToggled = useAppSelector((state) => state.toggleMenu);
   const [wichClass, setWichClass] = useState("menu");
   const [menuIcon, setMenuIcon] = useState("");
+  const [languageG, setLanguageG] = useState([""]);
 
   const dispatch = useAppDispatch();
 
@@ -35,9 +36,9 @@ export default function Menu() {
 
     try {
       if (searchStored && searchStored !== null) {
-        setKeyToSearch(searchStored)
+        setKeyToSearch(searchStored);
       } else {
-        setKeyToSearch(keyname)
+        setKeyToSearch(keyname);
       }
     } catch (e) {
       console.log(e);
@@ -50,6 +51,17 @@ export default function Menu() {
       .then((res) =>
         setMenuIcon(res.data[randomNumber(0, 9)].images.downsized_medium.url)
       );
+
+    if (lang === "es") {
+      setLanguageG([
+        "Límite de Gifs",
+        "Clasificación por edad",
+        "Idioma",
+        "Aplicar",
+      ]);
+    } else if (lang === "en") {
+      setLanguageG(["Gifs limit", "Age rating", "Language", "Apply"]);
+    }
   }, [keyname, limit, rating, lang, keyToSearch]);
 
   useEffect(() => {
@@ -62,7 +74,7 @@ export default function Menu() {
         setWichClass("menu-off");
       }
     } else {
-      setWichClass("menu-on")
+      setWichClass("menu-on");
     }
   }, [isToggled, menuIcon, screenSize]);
 
@@ -86,41 +98,64 @@ export default function Menu() {
 
   function FilterForm() {
     return (
-      <form id="menu__filters__menu" onSubmit={handleChanges}>
-        <label htmlFor="menu__filters__limits">Límite de gifs:</label>
-        <select
-          form="menu__filters__menu"
-          name="filtersLimits"
-          id="menu__filters__limits"
-        >
-          <option hidden>{limit}</option>
-          <option value="10">10</option>
-          <option value="20">20</option>
-          <option value="30">30</option>
-          <option value="40">40</option>
-          <option value="50">50</option>
-          <option value="70">70</option>
-          <option value="100">100</option>
-          <option value="120">120</option>
-          <option value="150">150</option>
-        </select>
-        <label htmlFor="menu__filters__rating">Clasificación por edad:</label>
-        <select name="filtersRating" id="menu__filters__rating">
-          <option hidden>{rating}</option>
-          <option value="g">G</option>
-          <option value="pg">PG</option>
-          <option value="pg-13">PG-13</option>
-          <option value="r">R</option>
-        </select>
-        <label htmlFor="menu__filters__language">Idioma</label>
-        <select name="filtersLanguage" id="menu__filters__language">
-          <option hidden>{lang}</option>
-          <option value="es">Español</option>
-          <option value="en">English</option>
-          <option value="pt">Portugués</option>
-          <option value="ja">Japonés</option>
-        </select>
-        <input type="submit" value="Aplicar" />
+      <form className="menu__filters__menu" onSubmit={handleChanges}>
+        <div className="menu__filters__menu__options">
+          <label
+            className="menu__filters__menu__options__label"
+          >
+            {languageG[0]}:
+          </label>
+          <select
+            name="filtersLimits"
+            className="menu__filters__menu__options__select"
+            id="menu__filters__menu__options__limits"
+          >
+            <option hidden>{limit}</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+            <option value="40">40</option>
+          </select>
+        </div>
+        <div className="menu__filters__menu__options">
+          <label
+            className="menu__filters__menu__options__label"
+          >
+            {languageG[1]}:
+          </label>
+          <select
+            name="filtersRating"
+            className="menu__filters__menu__options__select"
+            id="menu__filters__menu__options__rating"
+          >
+            <option hidden>{rating}</option>
+            <option value="g">G</option>
+            <option value="pg">PG</option>
+            <option value="pg-13">PG-13</option>
+            <option value="r">R</option>
+          </select>
+        </div>
+        <div className="menu__filters__menu__options">
+          <label
+            className="menu__filters__menu__options__label"
+          >
+            {languageG[2]}:
+          </label>
+          <select
+            name="filtersLanguage"
+            className="menu__filters__menu__options__select"
+            id="menu__filters__menu__options__language"
+          >
+            <option hidden>{lang}</option>
+            <option value="es">Español</option>
+            <option value="en">English</option>
+          </select>
+        </div>
+        <input
+          className="menu__filters__menu__submit"
+          type="submit"
+          value={languageG[3]}
+        />
       </form>
     );
   }

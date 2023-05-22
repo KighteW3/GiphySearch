@@ -10,10 +10,22 @@
   padding: 10px;
   box-sizing: border-box;
   text-align: center;
+
+  p{
+    a{
+      color: $darkPrimaryColorApp;
+    }
+  }
 }
 
 @media (prefers-color-scheme: dark) {
   .footer-container {
     background-color: $darkPrimaryColorApp;
+    
+    p{
+      a{
+        color: $secondColorApp
+      }
+    }
   }
 }

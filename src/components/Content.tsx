@@ -3,6 +3,8 @@ import { useAppSelector } from "../customHooks/store";
 import "../styles/Content.css";
 
 export default function Content() {
+  const [languageG, setLanguageG] = useState([""]);
+
   const keyvalue = useAppSelector((state) => state.apiAccesor.keyname);
   const [apiResult, setApiResult] = useState([]);
   const limit = useAppSelector((state) => state.apiAccesor.limit);
@@ -31,13 +33,17 @@ export default function Content() {
         console.log(e);
       }
     })();
+
+    lang === "es"
+      ? setLanguageG(["Buscando por"])
+      : setLanguageG(["Searching for"]);
   }, [keyvalue, limit, rating, lang]);
 
   function ContentFilter() {
     return (
       <div className="content-box__filter__searching">
         <h1>
-          <b>Buscando por:</b> {keyvalue}
+          <b>{languageG[0]}:</b> {keyvalue}
         </h1>
       </div>
     );

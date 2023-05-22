@@ -2,11 +2,13 @@ $primaryColorApp: #A0D8B3;
 $secondColorApp: #F6F1F1;
 $thirdColorApp: #AFD3E2;
 $fourthColorApp: #212A3E;
+$hoversLight: #fbfbff;
 
 $darkPrimaryColorApp: #0F0E0E;
 $darkSecondColorApp: #191919;
 $darkThirdColorApp: #171717;
 $darkFourthColorApp: #F1F6F9;
+$hoversDark: #444;
 
 $borderRadius: 12px;
 
@@ -18,4 +20,28 @@ $borderRadius: 12px;
   display: grid;
   grid-template-rows: 13% 79% 8%;
   overflow-y: hidden;
+}
+
+@media only screen and (max-height: 548px) {
+  .main {
+    grid-template-rows: 15% 74% 11%;
+  }
+}
+
+@media only screen and (max-height: 470px) {
+  .main {
+    grid-template-rows: 18% 71% 11%;
+  }
+}
+
+@media only screen and (max-height: 390px) {
+  .main {
+    grid-template-rows: 22% 67% 11%;
+  }
+}
+
+@media only screen and (max-height: 290px) {
+  .main {
+    grid-template-rows: 28% 59% 13%;
+  }
 }
