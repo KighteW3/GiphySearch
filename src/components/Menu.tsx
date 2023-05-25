@@ -49,7 +49,7 @@ export default function Menu() {
     )
       .then((data) => data.json())
       .then((res) =>
-        setMenuIcon(res.data[randomNumber(0, 9)].images.downsized_medium.url)
+        setMenuIcon(res.data[randomNumber(1, 9)].images.downsized_medium.url)
       );
 
     if (lang === "es") {

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import NavBar from "./components/NavBar";
 import Display from "./components/Display";
 import Footer from "./components/Footer";
@@ -22,35 +22,31 @@ function App() {
     }, 100);
 
     (async () => {
-      const keyname: any = localStorage.getItem("keyname");
+      const keyname: string | null = localStorage.getItem("keyname");
       try {
-        if (keyname)
-        dispatch(changeSearch(keyname))
-      }catch(e) {
-        console.log(e)
+        if (keyname) dispatch(changeSearch(keyname));
+      } catch (e) {
+        console.log(e);
       }
-      const limit: any = localStorage.getItem("limit");
+      const limit: string | null = localStorage.getItem("limit");
       try {
-        if (limit)
-        dispatch(changeLimit(parseInt(limit)))
-      }catch(e) {
-        console.log(e)
+        if (limit) dispatch(changeLimit(parseInt(limit)));
+      } catch (e) {
+        console.log(e);
       }
-      const rating: any = localStorage.getItem("rating");
+      const rating: string | null = localStorage.getItem("rating");
       try {
-        if (rating)
-        dispatch(changeRating(rating))
-      }catch(e) {
-        console.log(e)
+        if (rating) dispatch(changeRating(rating));
+      } catch (e) {
+        console.log(e);
       }
-      const language: any = localStorage.getItem("language");
+      const language: string | null = localStorage.getItem("language");
       try {
-        if (language)
-        dispatch(changeLanguage(language))
-      }catch(e) {
-        console.log(e)
+        if (language) dispatch(changeLanguage(language));
+      } catch (e) {
+        console.log(e);
       }
-    })()
+    })();
   }, [dispatch]);
 
   return (

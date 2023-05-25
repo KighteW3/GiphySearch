@@ -18,6 +18,14 @@
   }
 }
 
+@media only screen and (min-width: 266px) {
+  .footer-container {
+    p {
+      font-size: 15px;
+    }
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   .footer-container {
     background-color: $darkPrimaryColorApp;

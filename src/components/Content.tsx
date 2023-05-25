@@ -2,11 +2,20 @@ import { useEffect, useState } from "react";
 import { useAppSelector } from "../customHooks/store";
 import "../styles/Content.css";
 
+interface GiftResult {
+  id: number;
+  images: {
+    downsized_medium: {
+      url: string;
+    };
+  };
+}
+
 export default function Content() {
-  const [languageG, setLanguageG] = useState([""]);
+  const [languageG, setLanguageG] = useState<string[]>([""]);
 
   const keyvalue = useAppSelector((state) => state.apiAccesor.keyname);
-  const [apiResult, setApiResult] = useState([]);
+  const [apiResult, setApiResult] = useState<GiftResult[]>([]);
   const limit = useAppSelector((state) => state.apiAccesor.limit);
   const rating = useAppSelector((state) => state.apiAccesor.rating);
   const lang = useAppSelector((state) => state.apiAccesor.language);
@@ -20,13 +29,13 @@ export default function Content() {
           const res = await fetch(
             `https://api.giphy.com/v1/gifs/search?api_key=hbrH2e76pcieIfpPjMNg6689hgeeg3Oe&q=${searchStored}&limit=${limit}&rating=${rating}&lang=${lang}`
           );
-          const data = await res.json();
+          const data: { data: GiftResult[] } = await res.json();
           setApiResult(data.data);
         } else {
           const res = await fetch(
             `https://api.giphy.com/v1/gifs/search?api_key=hbrH2e76pcieIfpPjMNg6689hgeeg3Oe&q=${keyvalue}&limit=${limit}&rating=${rating}&lang=${lang}`
           );
-          const data = await res.json();
+          const data: { data: GiftResult[] } = await res.json();
           setApiResult(data.data);
         }
       } catch (e) {
@@ -38,6 +47,14 @@ export default function Content() {
       ? setLanguageG(["Buscando por"])
       : setLanguageG(["Searching for"]);
   }, [keyvalue, limit, rating, lang]);
+
+  const handleClick = (event: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
+    const target = event.target as HTMLImageElement;
+    if (target && target.src) {
+      console.log(target.src);
+    }
+  };
+  
 
   function ContentFilter() {
     return (
@@ -53,10 +70,11 @@ export default function Content() {
     return (
       <>
         <ul className="content-box__results__list">
-          {apiResult.map((result: any) => {
+          {apiResult.map((result) => {
             return (
               <li key={result.id}>
                 <img
+                  onClick={handleClick}
                   loading="lazy"
                   src={result.images.downsized_medium.url}
                   alt="Img's from GIPHY"
@@ -70,13 +88,18 @@ export default function Content() {
   }
 
   return (
-    <div className="content-box">
-      <div className="content-box__filter">
-        <ContentFilter />
+    <>{/* 
+      <div className="modal-container">
+        <img loading="lazy" src={modalResult} />
+      </div> */}
+      <div className="content-box">
+        <div className="content-box__filter">
+          <ContentFilter />
+        </div>
+        <div className="content-box__results">
+          <ContentResults />
+        </div>
       </div>
-      <div className="content-box__results">
-        <ContentResults />
-      </div>
-    </div>
+    </>
   );
 }

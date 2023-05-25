@@ -45,3 +45,9 @@ $borderRadius: 12px;
     grid-template-rows: 28% 59% 13%;
   }
 }
+
+@media only screen and (max-width: 266px) {
+  .main {
+    grid-template-rows: 15% 70% 15%;
+  }
+}
