@@ -4,6 +4,9 @@ import "../styles/Content.css";
 
 interface GiftResult {
   id: number;
+  title: string;
+  rating: string;
+  import_datetime: string;
   images: {
     downsized_medium: {
       url: string;
@@ -44,8 +47,8 @@ export default function Content() {
     })();
 
     lang === "es"
-      ? setLanguageG(["Buscando por"])
-      : setLanguageG(["Searching for"]);
+      ? setLanguageG(["Buscando por", "Título", "Clasificación", "Fecha", "Sin especificar"])
+      : setLanguageG(["Searching for", "Title", "Rating", "Date", "Unspecified"]);
   }, [keyvalue, limit, rating, lang]);
 
   const handleClick = (event: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
@@ -79,6 +82,11 @@ export default function Content() {
                   src={result.images.downsized_medium.url}
                   alt="Img's from GIPHY"
                 />
+                <div>
+                  <p><b>{languageG[1]}:</b> {(result.title !== "") ? result.title : languageG[4]}</p>
+                  <p><b>{languageG[2]}:</b> {(result.rating !== "") ? result.rating.toUpperCase() : languageG[4]}</p>
+                  <p><b>{languageG[3]}:</b> {(result.import_datetime !== "") ? result.import_datetime : languageG[4]}</p>
+                </div>
               </li>
             );
           })}
@@ -88,10 +96,7 @@ export default function Content() {
   }
 
   return (
-    <>{/* 
-      <div className="modal-container">
-        <img loading="lazy" src={modalResult} />
-      </div> */}
+    <>
       <div className="content-box">
         <div className="content-box__filter">
           <ContentFilter />

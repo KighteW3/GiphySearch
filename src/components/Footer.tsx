@@ -18,9 +18,13 @@ export default function Footer() {
     <footer className="footer-container">
       <p>
         {languageG[0]}{" "}
-        <a href="https://emanuelasandei.vercel.app">Emanuel Asandei</a>{" "}
+        <a href="https://emanuelasandei.vercel.app" target="blank">
+          Emanuel Asandei
+        </a>{" "}
         {languageG[1]}{" "}
-        <a href="https://developers.giphy.com/">Giphy Developers</a>
+        <a href="https://developers.giphy.com/" target="blank">
+          Giphy Developers
+        </a>
       </p>
     </footer>
   );

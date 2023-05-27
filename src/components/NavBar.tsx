@@ -7,6 +7,7 @@ import { changeSearch } from "../store/reducers/apiAccesor";
 export default function NavBar() {
   const isToggled = useAppSelector((state) => state.toggleMenu);
   const [screenSize, setScreenSize] = useState(0);
+  const keyname = useAppSelector((state) => state.apiAccesor.keyname);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -45,6 +46,42 @@ export default function NavBar() {
     dispatch(changeSearch(keyvalue));
   };
 
+  function SearchInput() {
+    return (
+      <>
+        <input
+          className="nav-mobile__form__input"
+          type="search"
+          id="nav-mobile__form__search-bar"
+          name="searchTo"
+          placeholder={keyname}
+        />
+        <button
+          className="nav-mobile__form__input"
+          id="nav-mobile__form__submit-button"
+          value="submit"
+          type="submit"
+          name="submit"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+            />
+          </svg>
+        </button>
+      </>
+    );
+  }
+
   if (screenSize < 840) {
     return (
       <div className="nav-mobile">
@@ -52,34 +89,7 @@ export default function NavBar() {
           <MenuButton />
         </div>
         <form className="nav-mobile__form" onSubmit={handleSubmit}>
-          <input
-            className="nav-mobile__form__input"
-            type="search"
-            id="nav-mobile__form__search-bar"
-            name="searchTo"
-          />
-          <button
-            className="nav-mobile__form__input"
-            id="nav-mobile__form__submit-button"
-            value="submit"
-            type="submit"
-            name="submit"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-              />
-            </svg>
-          </button>
+          <SearchInput />
         </form>
       </div>
     );
@@ -87,34 +97,7 @@ export default function NavBar() {
     return (
       <div className="nav-mobile">
         <form className="nav-mobile__form" onSubmit={handleSubmit}>
-          <input
-            className="nav-mobile__form__input"
-            type="search"
-            id="nav-mobile__form__search-bar"
-            name="searchTo"
-          />
-          <button
-            className="nav-mobile__form__input"
-            id="nav-mobile__form__submit-button"
-            value="submit"
-            type="submit"
-            name="submit"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-              />
-            </svg>
-          </button>
+          <SearchInput />
         </form>
       </div>
     );

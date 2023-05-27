@@ -1,10 +1,17 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
+type storageItems = string | null;
+
+const keyname: storageItems = localStorage.getItem("keyname");
+const limit: storageItems = localStorage.getItem("limit");
+const rating: storageItems = localStorage.getItem("rating");
+const language: storageItems = localStorage.getItem("language");
+
 const initialState = {
-  keyname: "Panda",
-  limit: 20,
-  rating: "pg-13",
-  language: "es",
+  keyname: keyname ? keyname : "Panda",
+  limit: limit ? limit : 20,
+  rating: rating ? rating : "pg-13",
+  language: language ? language : "es",
 };
 
 export const apiAccesorSlice = createSlice({

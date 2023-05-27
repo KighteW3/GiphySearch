@@ -9,7 +9,6 @@ import {
 } from "../store/reducers/apiAccesor";
 
 export default function Menu() {
-  const [keyToSearch, setKeyToSearch] = useState("");
   const [screenSize, setScreenSize] = useState(0);
   const isToggled = useAppSelector((state) => state.toggleMenu);
   const [wichClass, setWichClass] = useState("menu");
@@ -32,25 +31,33 @@ export default function Menu() {
   }, []);
 
   useEffect(() => {
-    const searchStored = localStorage.getItem("keyname");
+    const searchStored: string | null = localStorage.getItem("keyname");
 
     try {
-      if (searchStored && searchStored !== null) {
-        setKeyToSearch(searchStored);
+      if (searchStored) {
+        fetch(
+          `https://api.giphy.com/v1/gifs/search?api_key=hbrH2e76pcieIfpPjMNg6689hgeeg3Oe&q=${searchStored}&limit=${limit}&rating=${rating}&lagn=${lang}`
+        )
+          .then((data) => data.json())
+          .then((res) =>
+            setMenuIcon(
+              res.data[randomNumber(1, 9)].images.downsized_medium.url
+            )
+          );
       } else {
-        setKeyToSearch(keyname);
+        fetch(
+          `https://api.giphy.com/v1/gifs/search?api_key=hbrH2e76pcieIfpPjMNg6689hgeeg3Oe&q=${keyname}&limit=${limit}&rating=${rating}&lagn=${lang}`
+        )
+          .then((data) => data.json())
+          .then((res) =>
+            setMenuIcon(
+              res.data[randomNumber(1, 9)].images.downsized_medium.url
+            )
+          );
       }
     } catch (e) {
       console.log(e);
     }
-
-    fetch(
-      `https://api.giphy.com/v1/gifs/search?api_key=hbrH2e76pcieIfpPjMNg6689hgeeg3Oe&q=${keyToSearch}&limit=${limit}&rating=${rating}&lagn=${lang}`
-    )
-      .then((data) => data.json())
-      .then((res) =>
-        setMenuIcon(res.data[randomNumber(1, 9)].images.downsized_medium.url)
-      );
 
     if (lang === "es") {
       setLanguageG([
@@ -62,7 +69,7 @@ export default function Menu() {
     } else if (lang === "en") {
       setLanguageG(["Gifs limit", "Age rating", "Language", "Apply"]);
     }
-  }, [keyname, limit, rating, lang, keyToSearch]);
+  }, [keyname, limit, rating, lang]);
 
   useEffect(() => {
     if (screenSize < 840) {
@@ -100,9 +107,7 @@ export default function Menu() {
     return (
       <form className="menu__filters__menu" onSubmit={handleChanges}>
         <div className="menu__filters__menu__options">
-          <label
-            className="menu__filters__menu__options__label"
-          >
+          <label className="menu__filters__menu__options__label">
             {languageG[0]}:
           </label>
           <select
@@ -118,9 +123,7 @@ export default function Menu() {
           </select>
         </div>
         <div className="menu__filters__menu__options">
-          <label
-            className="menu__filters__menu__options__label"
-          >
+          <label className="menu__filters__menu__options__label">
             {languageG[1]}:
           </label>
           <select
@@ -136,9 +139,7 @@ export default function Menu() {
           </select>
         </div>
         <div className="menu__filters__menu__options">
-          <label
-            className="menu__filters__menu__options__label"
-          >
+          <label className="menu__filters__menu__options__label">
             {languageG[2]}:
           </label>
           <select

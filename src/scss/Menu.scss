@@ -3,6 +3,7 @@ $width: 80%;
 $margin-gap: 10px;
 
 .menu {
+  z-index: 2000;
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: 40% 60%;
@@ -100,13 +101,11 @@ $margin-gap: 10px;
 
 .menu-on {
   @extend .menu;
-  width: $width;
   animation: toggleOn 0.5s forwards;
 }
 
 .menu-off {
   @extend .menu-on;
-  width: $width;
   animation: toggle 0.5s forwards;
 }
 
