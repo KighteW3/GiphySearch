@@ -16,7 +16,7 @@ $separatorInputDefault: 14px;
     align-items: center;
 
     &__button {
-      background-color: #fff;
+      background-color: $secondColorApp;
       width: 50px;
       min-width: 50;
       height: $navInputsHeight;
@@ -28,8 +28,8 @@ $separatorInputDefault: 14px;
       display: flex;
       align-items: center;
 
-      img {
-        width: 100%;
+      svg {
+        color: black;
       }
     }
   }
@@ -43,6 +43,13 @@ $separatorInputDefault: 14px;
     align-items: center;
 
     &__input {
+      &:focus {
+        background-color: $hoversLight;
+        transition: 0.4s;
+      }
+
+      background-color: $secondColorApp;
+      color: black;
       border-radius: $borderRadius;
       border: none;
       outline: none;
@@ -58,6 +65,12 @@ $separatorInputDefault: 14px;
     }
 
     #nav-bar__form__submit-button {
+      &:hover {
+        cursor: pointer;
+        background-color: $hoversLight;
+        transition: 0.4s;
+      }
+
       display: flex;
       justify-content: center;
       align-items: center;
@@ -65,9 +78,8 @@ $separatorInputDefault: 14px;
       padding: $separatorInputDefault;
       border-radius: 0 $borderRadius $borderRadius 0;
 
-      img {
-        width: 100%;
-        filter: invert(1);
+      svg {
+        color: black;
       }
     }
   }
@@ -98,7 +110,7 @@ $separatorInputDefault: 14px;
     &__form {
       #nav-bar__form__search-bar {
         width: 50%;
-        max-width: 700px
+        max-width: 700px;
       }
     }
   }
@@ -108,10 +120,34 @@ $separatorInputDefault: 14px;
   .nav-bar {
     background-color: $darkPrimaryColorApp;
 
+    &__menu-button {
+      &__button {
+        background-color: $darkSecondColorApp;
+
+        svg {
+          color: white;
+        }
+      }
+    }
+
     &__form {
+      &__input {
+        &:focus {
+          background-color: $hoversDark;
+          transition: 0.4s;
+        }
+  
+        background-color: $darkSecondColorApp;
+        color: white;
+      }
+
       #nav-bar__form__submit-button {
-        img {
-          filter: invert(0);
+        &:hover {
+          background-color: $hoversDark;
+        }
+  
+        svg {
+          color: white;
         }
       }
     }

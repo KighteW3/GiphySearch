@@ -4,7 +4,7 @@
   position: absolute;
   bottom: 0;
   display: grid;
-  grid-template-rows: 13% 80% 7%;
+  grid-template-rows: 10% 83% 7%;
   overflow-y: hidden;
 }
 .main__modal-container {
@@ -112,10 +112,6 @@
 .content-box__filter__searching h1 {
   font-size: 25px;
   margin: 0 15px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  flex: 1;
 }
 .content-box__results {
   width: 100%;

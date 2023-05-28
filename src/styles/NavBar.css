@@ -4,7 +4,7 @@
   position: absolute;
   bottom: 0;
   display: grid;
-  grid-template-rows: 13% 80% 7%;
+  grid-template-rows: 10% 83% 7%;
   overflow-y: hidden;
 }
 .main__modal-container {
@@ -103,7 +103,7 @@
   align-items: center;
 }
 .nav-bar__menu-button__button {
-  background-color: #fff;
+  background-color: #C9D6DF;
   width: 50px;
   min-width: 50;
   height: 50px;
@@ -115,8 +115,8 @@
   display: flex;
   align-items: center;
 }
-.nav-bar__menu-button__button img {
-  width: 100%;
+.nav-bar__menu-button__button svg {
+  color: black;
 }
 .nav-bar__form {
   width: 100%;
@@ -127,10 +127,16 @@
   align-items: center;
 }
 .nav-bar__form__input {
+  background-color: #C9D6DF;
+  color: black;
   border-radius: 12px;
   border: none;
   outline: none;
   height: 50px;
+}
+.nav-bar__form__input:focus {
+  background-color: #ebeaff;
+  transition: 0.4s;
 }
 .nav-bar__form #nav-bar__form__search-bar {
   padding: 5px 20px 5px 20px;
@@ -147,9 +153,13 @@
   padding: 14px;
   border-radius: 0 12px 12px 0;
 }
-.nav-bar__form #nav-bar__form__submit-button img {
-  width: 100%;
-  filter: invert(1);
+.nav-bar__form #nav-bar__form__submit-button:hover {
+  cursor: pointer;
+  background-color: #ebeaff;
+  transition: 0.4s;
+}
+.nav-bar__form #nav-bar__form__submit-button svg {
+  color: black;
 }
 
 @media only screen and (max-width: 400px) {
@@ -177,8 +187,25 @@
   .nav-bar {
     background-color: #0f0e0e;
   }
-  .nav-bar__form #nav-bar__form__submit-button img {
-    filter: invert(0);
+  .nav-bar__menu-button__button {
+    background-color: #292929;
+  }
+  .nav-bar__menu-button__button svg {
+    color: white;
+  }
+  .nav-bar__form__input {
+    background-color: #292929;
+    color: white;
+  }
+  .nav-bar__form__input:focus {
+    background-color: #444;
+    transition: 0.4s;
+  }
+  .nav-bar__form #nav-bar__form__submit-button:hover {
+    background-color: #444;
+  }
+  .nav-bar__form #nav-bar__form__submit-button svg {
+    color: white;
   }
 }
 
