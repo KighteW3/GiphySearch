@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { useAppSelector } from "../customHooks/store";
+import { useAppDispatch, useAppSelector } from "../customHooks/store";
 import "../styles/Content.css";
+import { changeSource, toggleFullView } from "../store/reducers/fullView";
 
 interface GiftResult {
   id: number;
@@ -15,6 +16,7 @@ interface GiftResult {
 }
 
 export default function Content() {
+  const dispatch = useAppDispatch();
   const [languageG, setLanguageG] = useState<string[]>([""]);
 
   const keyvalue = useAppSelector((state) => state.apiAccesor.keyname);
@@ -47,17 +49,31 @@ export default function Content() {
     })();
 
     lang === "es"
-      ? setLanguageG(["Buscando por", "Título", "Clasificación", "Fecha", "Sin especificar"])
-      : setLanguageG(["Searching for", "Title", "Rating", "Date", "Unspecified"]);
+      ? setLanguageG([
+          "Buscando por",
+          "Título",
+          "Clasificación",
+          "Fecha",
+          "Sin especificar",
+        ])
+      : setLanguageG([
+          "Searching for",
+          "Title",
+          "Rating",
+          "Date",
+          "Unspecified",
+        ]);
   }, [keyvalue, limit, rating, lang]);
 
-  const handleClick = (event: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
+  const handleClick = (
+    event: React.MouseEvent<HTMLImageElement, MouseEvent>
+  ) => {
     const target = event.target as HTMLImageElement;
     if (target && target.src) {
-      console.log(target.src);
+      dispatch(toggleFullView("flex"));
+      dispatch(changeSource(target.src));
     }
   };
-  
 
   function ContentFilter() {
     return (
@@ -83,9 +99,22 @@ export default function Content() {
                   alt="Img's from GIPHY"
                 />
                 <div>
-                  <p><b>{languageG[1]}:</b> {(result.title !== "") ? result.title : languageG[4]}</p>
-                  <p><b>{languageG[2]}:</b> {(result.rating !== "") ? result.rating.toUpperCase() : languageG[4]}</p>
-                  <p><b>{languageG[3]}:</b> {(result.import_datetime !== "") ? result.import_datetime : languageG[4]}</p>
+                  <p>
+                    <b>{languageG[1]}:</b>{" "}
+                    {result.title !== "" ? result.title : languageG[4]}
+                  </p>
+                  <p>
+                    <b>{languageG[2]}:</b>{" "}
+                    {result.rating !== ""
+                      ? result.rating.toUpperCase()
+                      : languageG[4]}
+                  </p>
+                  <p>
+                    <b>{languageG[3]}:</b>{" "}
+                    {result.import_datetime !== ""
+                      ? result.import_datetime
+                      : languageG[4]}
+                  </p>
                 </div>
               </li>
             );

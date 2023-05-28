@@ -12,15 +12,50 @@
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.3333333333);
   z-index: 3000;
 }
-.main__modal-container img {
+.main__modal-container div {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+.main__modal-container div img {
+  width: 100%;
+}
+.main__modal-container div a {
+  align-self: flex-start;
+  width: 50px;
+  height: 50px;
+  background-color: #C9D6DF;
+  border-radius: 12px;
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main__modal-container div a svg {
+  color: black;
   width: 70%;
+  height: 70%;
 }
 
+@media only screen and (min-width: 840px) {
+  .main__modal-container div {
+    width: fit-content;
+    height: 80%;
+    flex-direction: row;
+  }
+  .main__modal-container div img {
+    height: 100%;
+  }
+  .main__modal-container div a {
+    margin: 0 10px;
+  }
+}
 @media only screen and (max-height: 548px) {
   .main {
     grid-template-rows: 15% 74% 11%;
@@ -51,25 +86,20 @@
     grid-template-rows: 15% 70% 15%;
   }
 }
-.modal-container {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.3333333333);
+@media (prefers-color-scheme: dark) {
+  .main__modal-container div a {
+    background-color: #292929;
+  }
+  .main__modal-container div a svg {
+    color: white;
+  }
 }
-.modal-container img {
-  width: 70%;
-}
-
 .content-box {
   width: 100%;
   height: 100%;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 15% 85%;
+  grid-template-rows: 12% 88%;
 }
 .content-box__filter {
   width: 100%;
@@ -96,7 +126,7 @@
   align-items: flex-start;
 }
 .content-box__results__list {
-  background-color: #F6F1F1;
+  background-color: #C9D6DF;
   border-radius: 12px;
   width: 100%;
   height: 95%;
@@ -116,12 +146,12 @@
   flex-direction: column;
   list-style: none;
   padding: 5px;
-  width: auto;
+  width: 80%;
   height: auto;
   border-radius: 12px;
   background-color: #222;
   line-height: 0;
-  color: #F6F1F1;
+  color: #C9D6DF;
 }
 .content-box__results__list li img {
   object-fit: cover;
@@ -130,8 +160,14 @@
   height: auto;
   max-width: 100%;
 }
+.content-box__results__list li img:hover {
+  cursor: pointer;
+  filter: brightness(1.3);
+  transition: 0.4s;
+}
 .content-box__results__list li div {
   line-height: initial;
+  font-size: medium;
   width: 90%;
   align-self: center;
 }

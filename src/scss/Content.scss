@@ -1,26 +1,12 @@
 @import "App.scss";
 $giphsHeight: 233px;
 
-.modal-container {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #0005;
-
-  img {
-    width: 70%;
-  }
-}
-
 .content-box {
   width: 100%;
   height: 100%;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 15% 85%;
+  grid-template-rows: 12% 88%;
 
   &__filter {
     width: 100%;
@@ -70,7 +56,7 @@ $giphsHeight: 233px;
         flex-direction: column;
         list-style: none;
         padding: 5px;
-        width: auto;
+        width: 80%;
         height: auto;
         border-radius: $borderRadius;
         background-color: #222;
@@ -78,6 +64,12 @@ $giphsHeight: 233px;
         color: $secondColorApp;
 
         img {
+          &:hover {
+            cursor: pointer;
+            filter: brightness(1.3);
+            transition: 0.4s;
+          }
+
           object-fit: cover;
           border-radius: inherit;
           font-size: 0;
@@ -87,6 +79,7 @@ $giphsHeight: 233px;
 
         div {
           line-height: initial;
+          font-size: medium;
           width: 90%;
           align-self: center;
 

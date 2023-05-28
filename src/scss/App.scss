@@ -1,13 +1,13 @@
-$primaryColorApp: #A0D8B3;
-$secondColorApp: #F6F1F1;
-$thirdColorApp: #AFD3E2;
-$fourthColorApp: #212A3E;
-$hoversLight: #fbfbff;
+$primaryColorApp: #F6F6F6;
+$secondColorApp: #C9D6DF;
+$thirdColorApp: #F0F5F9;
+$fourthColorApp: #212a3e;
+$hoversLight: #ebeaff;
 
-$darkPrimaryColorApp: #0F0E0E;
+$darkPrimaryColorApp: #0f0e0e;
 $darkSecondColorApp: #292929;
 $darkThirdColorApp: #171717;
-$darkFourthColorApp: #F1F6F9;
+$darkFourthColorApp: #f1f6f9;
 $hoversDark: #444;
 
 $borderRadius: 12px;
@@ -26,18 +26,60 @@ $borderRadius: 12px;
     width: 100%;
     height: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #0005;
     z-index: 3000;
-  
-    img {
-      width: 70%;
+
+    div {
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+
+      img {
+        width: 100%;
+      }
+      a {
+        align-self: flex-start;
+        width: 50px;
+        height: 50px;
+        background-color: $secondColorApp;
+        border-radius: $borderRadius;
+        margin: 10px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        svg {
+          color: black;
+          width: 70%;
+          height: 70%;
+        }
+      }
     }
   }
 }
 
+@media only screen and (min-width: 840px) {
+  .main {
+    &__modal-container {
+      div {
+        width: fit-content;
+        height: 80%;
+        flex-direction: row;
 
+        img {
+          height: 100%;
+        }
+
+        a {
+          margin: 0 10px;
+        }
+      }
+    }
+  }
+}
 
 @media only screen and (max-height: 548px) {
   .main {
@@ -72,5 +114,21 @@ $borderRadius: 12px;
 @media only screen and (max-width: 266px) {
   .main {
     grid-template-rows: 15% 70% 15%;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .main {
+    &__modal-container {
+      div {
+        a {
+          background-color: $darkSecondColorApp;
+
+          svg {
+            color: white;
+          }
+        }
+      }
+    }
   }
 }

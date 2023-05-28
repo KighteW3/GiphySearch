@@ -131,7 +131,7 @@ export default function Menu() {
             className="menu__filters__menu__options__select"
             id="menu__filters__menu__options__rating"
           >
-            <option hidden>{rating}</option>
+            <option hidden>{rating.toUpperCase()}</option>
             <option value="g">G</option>
             <option value="pg">PG</option>
             <option value="pg-13">PG-13</option>
@@ -147,7 +147,7 @@ export default function Menu() {
             className="menu__filters__menu__options__select"
             id="menu__filters__menu__options__language"
           >
-            <option hidden>{lang}</option>
+            <option hidden>{lang === "es" ? "Español" : "English"}</option>
             <option value="es">Español</option>
             <option value="en">English</option>
           </select>

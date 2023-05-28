@@ -28,8 +28,21 @@ export default function NavBar() {
 
   function MenuButton() {
     return (
-      <div className="nav-mobile__menu-button__button" onClick={handleClick}>
-        <img src="/img/menu.png" alt="" />
+      <div className="nav-bar__menu-button__button" onClick={handleClick}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="w-6 h-6"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75"
+          />
+        </svg>
       </div>
     );
   }
@@ -50,15 +63,15 @@ export default function NavBar() {
     return (
       <>
         <input
-          className="nav-mobile__form__input"
+          className="nav-bar__form__input"
           type="search"
-          id="nav-mobile__form__search-bar"
+          id="nav-bar__form__search-bar"
           name="searchTo"
           placeholder={keyname}
         />
         <button
-          className="nav-mobile__form__input"
-          id="nav-mobile__form__submit-button"
+          className="nav-bar__form__input"
+          id="nav-bar__form__submit-button"
           value="submit"
           type="submit"
           name="submit"
@@ -84,19 +97,19 @@ export default function NavBar() {
 
   if (screenSize < 840) {
     return (
-      <div className="nav-mobile">
-        <div className="nav-mobile__menu-button">
+      <div className="nav-bar">
+        <div className="nav-bar__menu-button">
           <MenuButton />
         </div>
-        <form className="nav-mobile__form" onSubmit={handleSubmit}>
+        <form className="nav-bar__form" onSubmit={handleSubmit}>
           <SearchInput />
         </form>
       </div>
     );
   } else {
     return (
-      <div className="nav-mobile">
-        <form className="nav-mobile__form" onSubmit={handleSubmit}>
+      <div className="nav-bar">
+        <form className="nav-bar__form" onSubmit={handleSubmit}>
           <SearchInput />
         </form>
       </div>
