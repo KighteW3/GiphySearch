@@ -67,6 +67,7 @@ export default function NavBar() {
           type="search"
           id="nav-bar__form__search-bar"
           name="searchTo"
+          maxLength={50}
           placeholder={keyname}
         />
         <button

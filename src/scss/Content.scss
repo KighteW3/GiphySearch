@@ -24,6 +24,10 @@ $giphsHeight: 233px;
       h1 {
         font-size: 25px;
         margin: 0 15px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        flex: 1;
       }
     }
   }
@@ -129,11 +133,24 @@ $giphsHeight: 233px;
 @media only screen and (min-width: 840px) {
   .content-box {
     width: 93%;
+
+    &__results {
+      &__list {
+        li {
+          width: auto;
+        }
+      }
+    }
   }
 }
 
 @media only screen and (max-width: 840px) {
   .content-box {
+    &__filter {
+      &__searching {
+        width: 100%;
+      }
+    }
     &__results {
       align-items: center;
     }
@@ -142,6 +159,32 @@ $giphsHeight: 233px;
 
 @media only screen and (max-width: 290px) {
   .content-box {
+    &__filter {
+      &__searching {
+        width: 100%;
+        h1 {
+          font-size: 15px;
+        }
+      }
+    }
+    &__results {
+      &__list {
+        padding: 10px 0;
+      }
+    }
+  }
+}
+
+@media only screen and (max-height: 390px) {
+  .content-box {
+    &__filter {
+      &__searching {
+        width: 100%;
+        h1 {
+          font-size: 15px;
+        }
+      }
+    }
     &__results {
       &__list {
         padding: 10px 0;
@@ -154,15 +197,12 @@ $giphsHeight: 233px;
   .content-box {
     &__filter {
       &__searching {
-        h1 {
-          font-size: 20px;
-        }
+        width: 100%;
       }
-
-      &__results {
-        &__list {
-          padding: 10px 0;
-        }
+    }
+    &__results {
+      &__list {
+        padding: 10px 0;
       }
     }
   }

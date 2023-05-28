@@ -39,21 +39,25 @@ export default function Menu() {
           `https://api.giphy.com/v1/gifs/search?api_key=hbrH2e76pcieIfpPjMNg6689hgeeg3Oe&q=${searchStored}&limit=${limit}&rating=${rating}&lagn=${lang}`
         )
           .then((data) => data.json())
-          .then((res) =>
-            setMenuIcon(
-              res.data[randomNumber(1, 9)].images.downsized_medium.url
-            )
-          );
+          .then((res) => {
+            res.data.length > 0
+              ? setMenuIcon(
+                  res.data[randomNumber(1, 9)].images.downsized_medium.url
+                )
+              : setMenuIcon("/img/404.gif");
+          });
       } else {
         fetch(
           `https://api.giphy.com/v1/gifs/search?api_key=hbrH2e76pcieIfpPjMNg6689hgeeg3Oe&q=${keyname}&limit=${limit}&rating=${rating}&lagn=${lang}`
         )
           .then((data) => data.json())
-          .then((res) =>
-            setMenuIcon(
-              res.data[randomNumber(1, 9)].images.downsized_medium.url
-            )
-          );
+          .then((res) => {
+            res.data.length > 0
+              ? setMenuIcon(
+                  res.data[randomNumber(1, 9)].images.downsized_medium.url
+                )
+              : setMenuIcon("/img/404.gif");
+          });
       }
     } catch (e) {
       console.log(e);

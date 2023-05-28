@@ -55,6 +55,7 @@ export default function Content() {
           "Clasificación",
           "Fecha",
           "Sin especificar",
+          "Sin resultados",
         ])
       : setLanguageG([
           "Searching for",
@@ -62,6 +63,7 @@ export default function Content() {
           "Rating",
           "Date",
           "Unspecified",
+          "Not found",
         ]);
   }, [keyvalue, limit, rating, lang]);
 
@@ -75,6 +77,7 @@ export default function Content() {
     }
   };
 
+  
   function ContentFilter() {
     return (
       <div className="content-box__filter__searching">
@@ -131,7 +134,7 @@ export default function Content() {
           <ContentFilter />
         </div>
         <div className="content-box__results">
-          <ContentResults />
+          {apiResult.length > 0 ? <ContentResults /> : <h2>{languageG[5]}</h2>}
         </div>
       </div>
     </>
