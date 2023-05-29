@@ -34,6 +34,8 @@ $borderRadius: 12px;
 
     div {
       width: 90%;
+      max-height: 98%;
+      object-fit: cover;
       display: flex;
       flex-direction: column;
 
@@ -67,6 +69,7 @@ $borderRadius: 12px;
       div {
         width: fit-content;
         height: 80%;
+        max-width: 98%;
         flex-direction: row;
 
         img {

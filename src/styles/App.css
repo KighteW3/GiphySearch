@@ -20,6 +20,8 @@
 }
 .main__modal-container div {
   width: 90%;
+  max-height: 98%;
+  object-fit: cover;
   display: flex;
   flex-direction: column;
 }
@@ -47,6 +49,7 @@
   .main__modal-container div {
     width: fit-content;
     height: 80%;
+    max-width: 98%;
     flex-direction: row;
   }
   .main__modal-container div img {
