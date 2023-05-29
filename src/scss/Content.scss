@@ -24,6 +24,10 @@ $giphsHeight: 233px;
       h1 {
         font-size: 25px;
         margin: 0 15px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 300px;
       }
     }
   }
@@ -114,9 +118,19 @@ $giphsHeight: 233px;
   .content-box {
     width: 93%;
 
+    &__filter {
+      &__searching {
+        h1 {
+          width: 800px;
+        }
+      }
+    }
+
     &__results {
       &__list {
         li {
+          width: auto;
+
           img {
             height: $giphsHeight;
           }
@@ -126,9 +140,17 @@ $giphsHeight: 233px;
   }
 }
 
-@media only screen and (min-width: 840px) {
+@media only screen and (min-width: 840px) and (max-width: 1136px) {
   .content-box {
     width: 93%;
+
+    &__filter {
+      &__searching {
+        h1 {
+          width: 500px;
+        }
+      }
+    }
 
     &__results {
       &__list {
@@ -189,11 +211,14 @@ $giphsHeight: 233px;
   }
 }
 
-@media only screen and (max-width: 266px) {
+@media only screen and (max-width: 334px) {
   .content-box {
     &__filter {
       &__searching {
         width: 100%;
+        h1 {
+          width: 200px;
+        }
       }
     }
     &__results {

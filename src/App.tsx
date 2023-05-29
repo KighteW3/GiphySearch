@@ -15,8 +15,8 @@ function App() {
     dispatch(toggleFullView("none"));
   };
 
-  return (
-    <div className="main">
+  function ModalFullView() {
+    return (
       <div
         className="main__modal-container"
         style={{ display: showFullView }}
@@ -42,6 +42,12 @@ function App() {
           </a>
         </div>
       </div>
+    );
+  }
+
+  return (
+    <div className="main">
+      <ModalFullView />
       <NavBar />
       <Display />
       <Footer />
