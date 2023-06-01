@@ -151,7 +151,7 @@ export default function Menu() {
             className="menu__filters__menu__options__select"
             id="menu__filters__menu__options__language"
           >
-            <option hidden>{lang === "es" ? "Español" : "English"}</option>
+            <option value={lang === "es" || lang === "Español" ? "es" : "en"} hidden>{lang === "es" || lang === "Español" ? "Español" : "English"}</option>
             <option value="es">Español</option>
             <option value="en">English</option>
           </select>
